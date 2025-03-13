@@ -1,0 +1,12 @@
+Import requests
+
+def fetch_papers(query, max_results=10):
+    base_url = "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi"
+    params = {
+        "db": "pubmed",
+        "term": query,
+        "retmode": "json",
+        "retmax": max_results
+    }
+    response = requests.get(base_url, params=params)
+    return response.json()
